@@ -1,0 +1,10 @@
+{
+    "_comment": "ITEMS",
+    "item.Ring.0": "Anello del minatore",
+    "_comment": "GUI",
+    "button.baubles": "Accessori",
+    "button.normal": "Normale",
+    "_comment": "",
+    "_comment": "Keybinding",
+    "keybind.baublesinventory": "Inventario accessori"
+}

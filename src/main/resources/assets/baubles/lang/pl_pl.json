@@ -1,0 +1,9 @@
+{
+    "_comment": "ITEMS",
+    "item.Ring.0": "Pierścień Górnika",
+    "_comment": "GUI",
+    "button.baubles": "Baubles",
+    "button.normal": "Normalne",
+    "_comment": "Keybinding",
+    "keybind.baublesinventory": "Inwentarz Baubles"
+}

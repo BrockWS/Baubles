@@ -1,0 +1,17 @@
+{
+    "_comment": "ITEMS",
+    "item.Ring.0": "Пръстенът на миньора",
+    "_comment": "GUI",
+    "button.baubles": "Дрънкулки",
+    "button.normal": "Нормално",
+    "_comment": "Keybinding",
+    "keybind.baublesinventory": "Инвентара на Дранкулките",
+    "_comment": "Description",
+    "name.AMULET": "Дрънкулка (Амулет)",
+    "name.RING": "Дрънкулка (Пръстен)",
+    "name.BELT": "Дрънкулка (Колан)",
+    "name.TRINKET": "Дрънкулка (Всяко)",
+    "name.HEAD": "Дрънкулка (Глава)",
+    "name.BODY": "Дрънкулка (Тяло)",
+    "name.CHARM": "Дрънкулка (Чар)"
+}

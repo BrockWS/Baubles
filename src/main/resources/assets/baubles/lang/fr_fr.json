@@ -1,0 +1,17 @@
+{
+    "_comment": "ITEMS",
+    "item.Ring.0": "Anneau du mineur",
+    "_comment": "GUI",
+    "button.baubles": "Bibelots",
+    "button.normal": "Normal",
+    "_comment": "Keybinding",
+    "keybind.baublesinventory": "Inventaire des bibelots",
+    "_comment": "Description",
+    "name.AMULET": "Bibelot (Amulette)",
+    "name.RING": "Bibelot (Anneau)",
+    "name.BELT": "Bibelot (Ceinture)",
+    "name.TRINKET": "Bibelot (Tous)",
+    "name.HEAD": "Bibelot (Tête)",
+    "name.BODY": "Bibelot (Corps)",
+    "name.CHARM": "Bibelot (Bracelet)"
+}

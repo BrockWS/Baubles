@@ -1,0 +1,9 @@
+{
+    "_comment": "Речі",
+    "item.Ring.0": "Перстень шахтаря",
+    "_comment": "GUI",
+    "button.baubles": "Baubles",
+    "button.normal": "Звич.",
+    "_comment": "Keybinding",
+    "keybind.baublesinventory": "Інвертар Baubles"
+}

@@ -1,0 +1,9 @@
+{
+    "_comment": "ITEMS",
+    "item.Ring.0": "Anel do Minerador",
+    "_comment": "GUI",
+    "button.baubles": "Baubles",
+    "button.normal": "Normal",
+    "_comment": "Keybinding",
+    "keybind.baublesinventory": "Inventário das Baubles"
+}

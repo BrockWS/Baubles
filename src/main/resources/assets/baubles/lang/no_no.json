@@ -1,0 +1,17 @@
+{
+    "_comment": "ITEMS",
+    "item.Ring.0": "Gruvearbeiders Ring",
+    "_comment": "GUI",
+    "button.baubles": "Smykker",
+    "button.normal": "Normal",
+    "_comment": "Keybinding",
+    "keybind.baublesinventory": "Smykkeskrin",
+    "_comment": "Description",
+    "name.AMULET": "Smykke (Amulett)",
+    "name.RING": "Smykke (Ring)",
+    "name.BELT": "Smykke (Belte)",
+    "name.TRINKET": "Smykke (Alt)",
+    "name.HEAD": "Smykke (Hode)",
+    "name.BODY": "Smykke (Kropp)",
+    "name.CHARM": "Smykke (Sjarm)"
+}

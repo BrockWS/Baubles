@@ -1,0 +1,17 @@
+{
+    "_comment": "ITEMS",
+    "item.baubles.ring": "Miner's Ring",
+    "_comment": "GUI",
+    "button.baubles": "Baubles",
+    "button.normal": "Normal",
+    "_comment": "Keybinding",
+    "keybind.baublesinventory": "Baubles Inventory",
+    "_comment": "Description",
+    "name.AMULET": "Bauble (Amulet)",
+    "name.RING": "Bauble (Ring)",
+    "name.BELT": "Bauble (Belt)",
+    "name.TRINKET": "Bauble (Any)",
+    "name.HEAD": "Bauble (Head)",
+    "name.BODY": "Bauble (Body)",
+    "name.CHARM": "Bauble (Charm)"
+}

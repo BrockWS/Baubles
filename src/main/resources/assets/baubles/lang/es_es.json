@@ -1,0 +1,9 @@
+{
+    "_comment": "ITEMS",
+    "item.Ring.0": "Anillo de Minero",
+    "_comment": "GUI",
+    "button.baubles": "Ornamentos",
+    "button.normal": "Normal",
+    "_comment": "Keybinding",
+    "keybind.baublesinventory": "Inventario de Ornamentos"
+}

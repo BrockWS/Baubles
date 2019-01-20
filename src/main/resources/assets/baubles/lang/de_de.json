@@ -1,0 +1,17 @@
+{
+    "_comment": "ITEMS",
+    "item.Ring.0": "Bergarbeiterring",
+    "_comment": "GUI",
+    "button.baubles": "Baubles",
+    "button.normal": "Normal",
+    "_comment": "Keybinding",
+    "keybind.baublesinventory": "Baubles-Inventar",
+    "_comment": "Description",
+    "name.AMULET": "Bauble (Amulett)",
+    "name.RING": "Bauble (Ring)",
+    "name.BELT": "Bauble (Gürtel)",
+    "name.TRINKET": "Bauble (Beliebig)",
+    "name.HEAD": "Bauble (Kopf)",
+    "name.BODY": "Bauble (Körper)",
+    "name.CHARM": "Bauble (Talisman)"
+}

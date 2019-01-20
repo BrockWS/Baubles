@@ -1,0 +1,17 @@
+{
+    "_comment": "ITEMS",
+    "item.Ring.0": "Δαχτυλίδι Μεταλλωρύχου",
+    "_comment": "GUI",
+    "button.baubles": "Μπιχλιμπίδια",
+    "button.normal": "Κανονικό",
+    "_comment": "Keybinding",
+    "keybind.baublesinventory": "Inventory Μπιχλιμπίδιων",
+    "_comment": "Description",
+    "name.AMULET": "Μπιχλιμπίδι (Φυλακτό)",
+    "name.RING": "Μπιχλιμπίδι (Δαχτυλίδι)",
+    "name.BELT": "Μπιχλιμπίδι (Ζώνη)",
+    "name.TRINKET": "Μπιχλιμπίδι (Κάθε)",
+    "name.HEAD": "Μπιχλιμπίδι (Κεφάλι)",
+    "name.BODY": "Μπιχλιμπίδι (Σώμα)",
+    "name.CHARM": "Μπιχλιμπίδι (Γοητεία)"
+}
