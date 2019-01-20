@@ -1,4 +1,5 @@
 package baubles.common;
+/*
 
 import java.io.File;
 import net.minecraftforge.common.MinecraftForge;
@@ -42,3 +43,4 @@ public class Config {
 		}
 	}
 }
+*/

@@ -1,29 +1,38 @@
 package baubles.common.network;
 
+
+import java.util.function.Supplier;
+
+import net.minecraft.entity.player.EntityPlayerMP;
+
+import net.minecraftforge.fml.network.NetworkEvent;
+
+import baubles.common.Baubles;
 import io.netty.buffer.ByteBuf;
-import net.minecraft.util.IThreadListener;
-import net.minecraft.world.WorldServer;
-import net.minecraftforge.fml.common.network.simpleimpl.IMessage;
-import net.minecraftforge.fml.common.network.simpleimpl.IMessageHandler;
-import net.minecraftforge.fml.common.network.simpleimpl.MessageContext;
 
-public class PacketOpenNormalInventory implements IMessage, IMessageHandler<PacketOpenNormalInventory, IMessage> {
+public class PacketOpenNormalInventory {
 
-	public PacketOpenNormalInventory() {}
+    public PacketOpenNormalInventory() {
 
-	@Override
-	public void toBytes(ByteBuf buffer) {}
+    }
 
-	@Override
-	public void fromBytes(ByteBuf buffer) {}
+    public void toBytes(ByteBuf buffer) {
+    }
 
-	@Override
-	public IMessage onMessage(PacketOpenNormalInventory message, MessageContext ctx) {
-		IThreadListener mainThread = (WorldServer) ctx.getServerHandler().player.world;
-		mainThread.addScheduledTask(new Runnable(){ public void run() {
-			ctx.getServerHandler().player.openContainer.onContainerClosed(ctx.getServerHandler().player);
-			ctx.getServerHandler().player.openContainer = ctx.getServerHandler().player.inventoryContainer;
-		}});
-		return null;
-	}
+    public static PacketOpenNormalInventory fromBytes(ByteBuf buffer) {
+        return new PacketOpenNormalInventory();
+    }
+
+    public static void onMessage(PacketOpenNormalInventory message, Supplier<NetworkEvent.Context> ctx) {
+        ctx.get().enqueueWork(() -> {
+            EntityPlayerMP player = ctx.get().getSender();
+            if (player == null) {
+                Baubles.log.error("Failed to open Normal inventory! Player is null!");
+                return;
+            }
+            //player.openContainer.onContainerClosed(player);
+            //player.displayGui(new );
+        });
+    }
 }
+

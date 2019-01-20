@@ -1,22 +1,15 @@
 package baubles.common.event;
 
-import java.util.ArrayList;
-import java.util.List;
+import net.minecraft.command.CommandSource;
 
-import baubles.api.BaubleType;
-import baubles.api.BaublesApi;
-import baubles.api.IBauble;
-import baubles.api.cap.BaublesCapabilities;
-import baubles.api.cap.IBaublesItemHandler;
-import net.minecraft.command.CommandBase;
-import net.minecraft.command.CommandException;
-import net.minecraft.command.ICommandSender;
-import net.minecraft.entity.player.EntityPlayerMP;
-import net.minecraft.item.ItemStack;
-import net.minecraft.server.MinecraftServer;
-import net.minecraft.util.text.TextComponentTranslation;
+import com.mojang.brigadier.CommandDispatcher;
 
-public class CommandBaubles extends CommandBase {
+public class CommandBaubles {
+
+    public static void register(CommandDispatcher<CommandSource> dispatcher) {
+        //dispatcher.register(LiteralArgumentBuilder.literal("").);
+    }
+	/*
 	private List<String> aliases;
 
 	public CommandBaubles() {
@@ -25,7 +18,7 @@ public class CommandBaubles extends CommandBase {
 		this.aliases.add("bau");
 	}
 
-	@Override
+    @Override
 	public String getName() {
 		return "baubles";
 	}
@@ -108,5 +101,5 @@ public class CommandBaubles extends CommandBase {
 			sender.sendMessage(new TextComponentTranslation("\u00a7cInvalid arguments"));
 			sender.sendMessage(new TextComponentTranslation("\u00a7cUse /baubles help to get help"));
 		}
-	}
+	}*/
 }

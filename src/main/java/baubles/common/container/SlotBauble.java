@@ -1,32 +1,30 @@
 package baubles.common.container;
 
-import baubles.api.IBauble;
-import baubles.api.cap.BaublesCapabilities;
-import baubles.api.cap.IBaublesItemHandler;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
+
 import net.minecraftforge.items.SlotItemHandler;
 
-public class SlotBauble extends SlotItemHandler
-{
-	int baubleSlot;
-	EntityPlayer player;
+import baubles.api.cap.IBaublesItemHandler;
 
-	public SlotBauble(EntityPlayer player, IBaublesItemHandler itemHandler, int slot, int par4, int par5)
-	{
-		super(itemHandler, slot, par4, par5);
-		this.baubleSlot = slot;
-		this.player = player;
-	}
+public class SlotBauble extends SlotItemHandler {
+    int baubleSlot;
+    EntityPlayer player;
 
-	/**
-	 * Check if the stack is a valid item for this slot.
-	 */
-	@Override
-	public boolean isItemValid(ItemStack stack)
-	{
-		return ((IBaublesItemHandler)getItemHandler()).isItemValidForSlot(baubleSlot, stack, player);
-	}
+    public SlotBauble(EntityPlayer player, IBaublesItemHandler itemHandler, int slot, int par4, int par5) {
+        super(itemHandler, slot, par4, par5);
+        this.baubleSlot = slot;
+        this.player = player;
+    }
+
+    /**
+     * Check if the stack is a valid item for this slot.
+     */
+    @Override
+    public boolean isItemValid(ItemStack stack) {
+        return ((IBaublesItemHandler) getItemHandler()).isItemValidForSlot(baubleSlot, stack, player);
+    }
+/*
 
 	@Override
 	public boolean canTakeStack(EntityPlayer player) {
@@ -65,10 +63,10 @@ public class SlotBauble extends SlotItemHandler
 			getStack().getCapability(BaublesCapabilities.CAPABILITY_ITEM_BAUBLE, null).onEquipped(getStack(), player);
 		}
 	}
+*/
 
-	@Override
-	public int getSlotStackLimit()
-	{
-		return 1;
-	}
+    @Override
+    public int getSlotStackLimit() {
+        return 1;
+    }
 }

@@ -1,30 +1,36 @@
 package baubles.common.network;
 
-import net.minecraft.util.IThreadListener;
-import net.minecraft.world.WorldServer;
-import net.minecraftforge.fml.common.network.simpleimpl.IMessage;
-import net.minecraftforge.fml.common.network.simpleimpl.IMessageHandler;
-import net.minecraftforge.fml.common.network.simpleimpl.MessageContext;
+import java.util.function.Supplier;
+
+import net.minecraft.entity.player.EntityPlayerMP;
+
+import net.minecraftforge.fml.network.NetworkEvent;
+
 import baubles.common.Baubles;
 import io.netty.buffer.ByteBuf;
 
-public class PacketOpenBaublesInventory implements IMessage, IMessageHandler<PacketOpenBaublesInventory, IMessage> {
+public class PacketOpenBaublesInventory {
 
-	public PacketOpenBaublesInventory() {}
+    public PacketOpenBaublesInventory() {
 
-	@Override
-	public void toBytes(ByteBuf buffer) {}
+    }
 
-	@Override
-	public void fromBytes(ByteBuf buffer) {}
+    public void toBytes(ByteBuf buf) {
 
-	@Override
-	public IMessage onMessage(PacketOpenBaublesInventory message, MessageContext ctx) {
-		IThreadListener mainThread = (WorldServer) ctx.getServerHandler().player.world;
-		mainThread.addScheduledTask(new Runnable(){ public void run() {
-			ctx.getServerHandler().player.openContainer.onContainerClosed(ctx.getServerHandler().player);
-			ctx.getServerHandler().player.openGui(Baubles.instance, Baubles.GUI, ctx.getServerHandler().player.world, 0, 0, 0);
-		}});
-		return null;
-	}
+    }
+
+    public static PacketOpenBaublesInventory fromBytes(ByteBuf buf) {
+        return new PacketOpenBaublesInventory();
+    }
+
+    public static void onMessage(PacketOpenBaublesInventory message, Supplier<NetworkEvent.Context> ctx) {
+        ctx.get().enqueueWork(() -> {
+            EntityPlayerMP player = ctx.get().getSender();
+            if (player == null) {
+                Baubles.log.error("Failed to open Baubles inventory! Player is null!");
+                return;
+            }
+            //player.openContainer.onContainerClosed(player);
+        });
+    }
 }

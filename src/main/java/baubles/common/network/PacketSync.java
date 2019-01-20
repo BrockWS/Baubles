@@ -1,51 +1,62 @@
 package baubles.common.network;
 
-import net.minecraft.client.Minecraft;
+import java.util.function.Supplier;
+
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
+import net.minecraft.network.PacketBuffer;
 import net.minecraft.world.World;
-import net.minecraftforge.fml.common.network.ByteBufUtils;
-import net.minecraftforge.fml.common.network.simpleimpl.IMessage;
-import net.minecraftforge.fml.common.network.simpleimpl.IMessageHandler;
-import net.minecraftforge.fml.common.network.simpleimpl.MessageContext;
+
+import net.minecraftforge.fml.network.NetworkEvent;
+
 import baubles.api.BaublesApi;
 import baubles.api.cap.IBaublesItemHandler;
 import baubles.common.Baubles;
-import io.netty.buffer.ByteBuf;
 
-public class PacketSync implements IMessage {
+public class PacketSync {
 
-	int playerId;
-	byte slot=0;
-	ItemStack bauble;
+    private int playerId;
+    private byte slot;
+    private ItemStack bauble;
 
-	public PacketSync() {}
+    public PacketSync(int playerId, byte slot, ItemStack bauble) {
+        this.playerId = playerId;
+        this.slot = slot;
+        this.bauble = bauble;
+    }
 
-	public PacketSync(EntityPlayer p, int slot, ItemStack bauble) {
-		this.slot = (byte) slot;
-		this.bauble = bauble;
-		this.playerId = p.getEntityId();
-	}
+    public PacketSync(EntityPlayer p, int slot, ItemStack bauble) {
+        this.slot = (byte) slot;
+        this.bauble = bauble;
+        this.playerId = p.getEntityId();
+    }
 
-	@Override
-	public void toBytes(ByteBuf buffer) {
-		buffer.writeInt(playerId);
-		buffer.writeByte(slot);
-		ByteBufUtils.writeItemStack(buffer, bauble);
-	}
+    public void toBytes(PacketBuffer buffer) {
+        buffer.writeInt(playerId);
+        buffer.writeByte(slot);
+        buffer.writeItemStack(bauble);
+    }
 
-	@Override
-	public void fromBytes(ByteBuf buffer) {
-		playerId = buffer.readInt();
-		slot = buffer.readByte();
-		bauble = ByteBufUtils.readItemStack(buffer);
-	}
+    public static PacketSync fromBytes(PacketBuffer buffer) {
+        int playerId = buffer.readInt();
+        byte slot = buffer.readByte();
+        ItemStack bauble = buffer.readItemStack();
+        return new PacketSync(playerId, slot, bauble);
+    }
 
-	public static class Handler implements IMessageHandler<PacketSync, IMessage>
-	{
-		@Override
-		public IMessage onMessage(PacketSync message, MessageContext ctx) {
+    public static void onMessage(PacketSync message, Supplier<NetworkEvent.Context> ctx) {
+        ctx.get().enqueueWork(() -> {
+            World world = Baubles.PROXY.getClientWorld();
+            if (world == null)
+                return;
+            Entity p = world.getEntityByID(message.playerId);
+            if (p instanceof EntityPlayer) {
+                IBaublesItemHandler baubles = BaublesApi.getBaublesHandler((EntityPlayer) p);
+                baubles.setStackInSlot(message.slot, message.bauble);
+            }
+        });
+	    /*
 			Minecraft.getMinecraft().addScheduledTask(new Runnable(){ public void run() {
 				World world = Baubles.proxy.getClientWorld();
 				if (world==null) return;
@@ -55,7 +66,7 @@ public class PacketSync implements IMessage {
 					baubles.setStackInSlot(message.slot, message.bauble);
 				}
 			}});
-			return null;
-		}
-	}
+			return null;*/
+    }
+
 }

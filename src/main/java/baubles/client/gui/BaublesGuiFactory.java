@@ -1,4 +1,5 @@
 package baubles.client.gui;
+/*
 
 import java.util.ArrayList;
 import java.util.List;
@@ -35,3 +36,4 @@ public class BaublesGuiFactory extends DefaultGuiFactory {
 		return list;
 	}
 }
+*/

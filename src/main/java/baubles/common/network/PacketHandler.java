@@ -1,18 +1,39 @@
 package baubles.common.network;
 
-import net.minecraftforge.fml.common.network.NetworkRegistry;
-import net.minecraftforge.fml.common.network.simpleimpl.SimpleNetworkWrapper;
-import net.minecraftforge.fml.relauncher.Side;
+import java.util.Objects;
+
+import net.minecraft.util.ResourceLocation;
+
+import net.minecraftforge.fml.network.NetworkRegistry;
+import net.minecraftforge.fml.network.simple.SimpleChannel;
+
 import baubles.common.Baubles;
 
-public class PacketHandler
-{
-	public static final SimpleNetworkWrapper INSTANCE = NetworkRegistry.INSTANCE.newSimpleChannel(Baubles.MODID.toLowerCase());
+public class PacketHandler {
+    public static final SimpleChannel INSTANCE = NetworkRegistry.newSimpleChannel(
+            new ResourceLocation(Baubles.MODID.toLowerCase(), "network"),
+            () -> "1",
+            s -> Objects.equals(s, "1"),
+            s -> Objects.equals(s, "1"));
 
-	public static void init()
-	{
-		INSTANCE.registerMessage(PacketOpenBaublesInventory.class, PacketOpenBaublesInventory.class, 0, Side.SERVER);
-		INSTANCE.registerMessage(PacketOpenNormalInventory.class, PacketOpenNormalInventory.class, 1, Side.SERVER);
-		INSTANCE.registerMessage(PacketSync.Handler.class, PacketSync.class, 2, Side.CLIENT);
-	}
+    public static void init() {
+        INSTANCE.registerMessage(
+                0,
+                PacketOpenBaublesInventory.class,
+                PacketOpenBaublesInventory::toBytes,
+                PacketOpenBaublesInventory::fromBytes,
+                PacketOpenBaublesInventory::onMessage);
+        INSTANCE.registerMessage(
+                1,
+                PacketOpenNormalInventory.class,
+                PacketOpenNormalInventory::toBytes,
+                PacketOpenNormalInventory::fromBytes,
+                PacketOpenNormalInventory::onMessage);
+        INSTANCE.registerMessage(
+                2,
+                PacketSync.class,
+                PacketSync::toBytes,
+                PacketSync::fromBytes,
+                PacketSync::onMessage);
+    }
 }
